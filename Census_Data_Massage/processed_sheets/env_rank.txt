@@ -1,0 +1,52 @@
+Rank	Air Quality Index 	State / Population
+1.	21.2	Hawaii / 1,392,704
+2.	29.1	Alaska / 728,300
+3.	33.5	Washington / 6,899,123
+4.	36.1	Oregon / 3,900,343
+5.	36.5	Maine / 1,328,535
+6.	37.0	North Dakota / 704,925
+6.	37.0	Nebraska / 1,855,617
+8.	37.6	Iowa / 3,078,116
+9.	38.3	Minnesota / 5,383,661
+10.	38.5	Vermont / 626,358
+11.	38.9	New Hampshire / 1,321,069
+11.	38.9	Florida / 19,361,792
+13.	39.5	Wisconsin / 5,724,692
+14.	39.6	South Dakota / 834,708
+14.	39.6	Montana / 1,006,370
+16.	40.4	New York / 19,594,330
+16.	40.4	Louisiana / 4,601,049
+18.	41.0	Texas / 26,092,033
+19.	41.4	Massachusetts / 6,657,291
+20.	42.1	New Mexico / 2,080,085
+20.	42.1	Nevada / 2,761,584
+22.	42.5	Michigan / 9,889,024
+23.	42.8	Kansas / 2,882,946
+24.	43.1	Arkansas / 2,947,036
+25.	43.5	Oklahoma / 3,818,851
+26.	43.6	Illinois / 12,868,747
+27.	43.7	Mississippi / 2,984,345
+27.	43.7	Rhode Island / 1,053,252
+29.	44.0	Missouri / 6,028,076
+30.	44.1	New Jersey / 8,874,374
+31.	44.3	Idaho / 1,599,464
+32.	44.8	South Carolina / 4,727,273
+33.	45.0	Virginia / 8,185,131
+33.	45.0	Wyoming / 575,251
+33.	45.0	Connecticut / 3,592,053
+36.	45.4	Arizona / 6,561,516
+37.	45.6	Pennsylvania / 12,758,729
+38.	46.0	California / 38,066,920
+39.	46.1	Kentucky / 4,383,272
+40.	46.4	Delaware / 917,060
+41.	46.5	North Carolina / 9,750,405
+42.	46.6	Alabama / 4,817,678
+43.	46.8	District of Columbia / 633,736
+44.	47.0	Maryland / 5,887,776
+45.	47.1	Colorado / 5,197,580
+46.	47.5	Tennessee / 6,451,365
+46.	47.5	Indiana / 6,542,411
+48.	47.6	West Virginia / 1,853,881
+49.	48.2	Georgia / 9,907,756
+49.	48.2	Ohio / 11,560,380
+51.	51.2	Utah / 2,858,111
