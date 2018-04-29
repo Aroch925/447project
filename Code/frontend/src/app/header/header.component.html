@@ -1,0 +1,26 @@
+<mat-toolbar color="primary" *ngIf="isLoggedIn$ | async as isLoggedIn" class="mat-elevation-z5">
+  <span>
+    <!--<img src="assets/img/angular_whiteTransparent.svg" class="angular-logo">-->
+    Group 2 Project
+  </span>
+  <span class="fill-remaining-space"></span>
+  <button mat-button (click)="retakeSurvey()">Retake the Survey</button>
+  <!--button mat-button routerLink="login" *ngIf="!isLoggedIn; else notLoggedIn">Login</button>
+  <ng-template #notLoggedIn>
+    <button mat-button (click)="onLogout()">Logout</button>
+  </ng-template -->
+  <!--<button mat-button (click)="onLogout()" *ngIf="isLoggedIn">Logout</button>-->
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <!--<button mat-menu-item>
+        <mat-icon>account_circle</mat-icon>
+        <span>Account</span>
+      </button>-->
+      <button mat-menu-item (click)="onLogout()" *ngIf="isLoggedIn">
+        <mat-icon>power_settings_new</mat-icon>
+        <span>Log Out</span>
+      </button>
+    </mat-menu>
+</mat-toolbar>

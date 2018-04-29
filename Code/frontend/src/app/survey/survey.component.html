@@ -1,0 +1,41 @@
+<div class="survey-content">
+  <mat-card>
+    <mat-card-content>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <h3>Please Fill Out the Survey</h3>
+        <mat-input-container class="full-width-input">
+          <p>Question 1</p>
+          <mat-form-field>
+            <mat-select [(value)]="selected">
+              <mat-option value="option1">Not Important</mat-option>
+              <mat-option value="option2">Don't Care</mat-option>
+              <mat-option value="option3">Very Important</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-input-container>
+        <mat-input-container class="full-width-input">
+          <mat-form-field>
+            <p>Question 2</p>
+            <mat-select [(value)]="selected1">
+              <mat-option value="option1">Not Important</mat-option>
+              <mat-option value="option2">Don't Care</mat-option>
+              <mat-option value="option3">Very Important</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-input-container>
+        <mat-input-container class="full-width-input">
+          <mat-form-field>
+              <p>Question 3</p>
+            <mat-select [(value)]="selected2">
+              <mat-option value="option1">Not Important</mat-option>
+              <mat-option value="option2">Don't Care</mat-option>
+              <mat-option value="option3">Very Important</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-input-container>        
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+        <button mat-raised-button color="secondary" [routerLink]="['/']" *ngIf="isLoggedIn">Cancel</button>    
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
