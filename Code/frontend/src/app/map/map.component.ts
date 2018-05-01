@@ -23,6 +23,11 @@ export class MapComponent implements OnInit {
     };
     this.map = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
 
+    const contentString = '<p>It worked</p>';
+    const infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+
     const marker1 = new google.maps.Marker({
       position: new google.maps.LatLng(39.9526, -75.1652),
       title: 'Philadelphia'
@@ -31,6 +36,7 @@ export class MapComponent implements OnInit {
     marker1.addListener('click', function() {
       this.map.setZoom(11);
       this.map.setCenter(marker1.getPosition());
+      infowindow.open(this.map, marker1);
     });
 
     const marker2 = new google.maps.Marker({
@@ -75,6 +81,23 @@ export class MapComponent implements OnInit {
     marker3.setMap(this.map);
     marker4.setMap(this.map);
     marker5.setMap(this.map);
+  }
+
+  addMarker(latitude, longitude, name) {
+    const marker1 = new google.maps.Marker({
+      position: new google.maps.LatLng(latitude, longitude),
+      title: name
+    });
+    marker1.addListener('click', function() {
+      this.map.setZoom(11);
+      this.map.setCenter(marker1.getPosition());
+    });
+  }
+
+  resetMap() {
+    const center = new google.maps.LatLng(37.09024, -95.712891);
+    this.map.setZoom(4);
+    this.map.setCenter(center);
   }
 
 }

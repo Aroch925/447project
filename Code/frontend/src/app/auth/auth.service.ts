@@ -4,10 +4,16 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { User } from './user';
 
+
 @Injectable()
 export class AuthService {
 
   public loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public admin: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
+  get isAdmin() {
+    return this.admin.asObservable();
+  }
 
   get isLoggedIn() {
     return this.loggedIn.asObservable();
@@ -25,6 +31,7 @@ export class AuthService {
         data => {
           if (data['success']) {
             this.loggedIn.next(true);
+            localStorage.setItem('currentUser', JSON.stringify(user));
             this.router.navigate(['/']);
           } else {
             alert(data['error']);
@@ -36,6 +43,7 @@ export class AuthService {
 
   logout() {
     this.loggedIn.next(false);
+    localStorage.removeItem('currentUser');
     this.router.navigate(['/login']);
   }
 }
