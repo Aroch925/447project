@@ -25,6 +25,7 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
 
   isLoggedIn$: Observable<boolean>;
+  isAdmin$: Observable<boolean>;
 
   constructor(
     private authService: AuthService,
@@ -33,6 +34,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.isLoggedIn$ = this.authService.isLoggedIn;
+    this.isAdmin$ = this.authService.isAdmin;
   }
 
   onLogout() {

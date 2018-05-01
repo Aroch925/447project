@@ -20,6 +20,9 @@ import { MapComponent } from './map/map.component';
 import { SignupComponent } from './signup/signup.component';
 import { UserService } from './auth/user.service';
 import { SurveyComponent } from './survey/survey.component';
+import { SocialComponent } from './social/social.component';
+import { AccountComponent } from './account/account.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import { SurveyComponent } from './survey/survey.component';
     LoginComponent,
     MapComponent,
     SignupComponent,
-    SurveyComponent
+    SurveyComponent,
+    SocialComponent,
+    AccountComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

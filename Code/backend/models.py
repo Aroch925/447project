@@ -7,4 +7,26 @@ class User(models.Model):
 
     first = models.CharField(max_length=20, help_text="Enter your first Name")
     last = models.CharField(max_length=20, help_text="Enter your last name")
+    
+    admin = models.BooleanField(default=False)
+    public = models.BooleanField(default=True)
+
+    question1 = models.IntegerField(default=0)
+    question2 = models.IntegerField(default=0)
+    question3 = models.IntegerField(default=0)
+    question4 = models.IntegerField(default=0)
+    question5 = models.IntegerField(default=0)
+    question6 = models.IntegerField(default=0)
+    question7 = models.IntegerField(default=0)
+    question8 = models.IntegerField(default=0)
+
+    result1 = models.CharField(max_length=30, default="")
+    result2 = models.CharField(max_length=30, default="")
+    result3 = models.CharField(max_length=30, default="")
+    result4 = models.CharField(max_length=30, default="")
+    result5 = models.CharField(max_length=30, default="")
+
+
+    
+
 

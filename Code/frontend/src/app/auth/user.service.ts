@@ -11,8 +11,24 @@ export class UserService {
     private http: HttpClient
   ) { }
 
+  getAll() {
+    return this.http.get<User[]>('http://localhost:8000/api/users');
+  }
+
+  getbyUsername(userName: String) {
+    return this.http.get('http://localhost:8000/api/users?userName=' + userName);
+  }
+
   create(user: User) {
-    // console.log(user);
+    user.admin = true;
     return this.http.post('http://localhost:8000/api/users', user);
+  }
+
+  update(user: User) {
+    return this.http.put('http://localhost:8000/api/users/' + user.userName, user);
+  }
+
+  delete(user: User) {
+    return this.http.delete('http://localhost:8000/api/users/' + user.userName);
   }
 }

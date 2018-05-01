@@ -24,6 +24,10 @@ export class LoginComponent implements OnInit {
       userName: ['', Validators.required],
       password: ['', Validators.required]
     });
+    if (localStorage.getItem('currentUser') !== null) {
+      this.authService.loggedIn.next(true);
+      this.router.navigate(['/']);
+    }
   }
 
   isFieldInvalid(field: string) {
