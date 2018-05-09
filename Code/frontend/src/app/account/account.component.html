@@ -1,3 +1,27 @@
-<p>
-  account works!
-</p>
+<div class="account-content">
+  <mat-card class="mat-elevation-z8">
+    <mat-card-content>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <h2>Account Information</h2>
+
+        <mat-form-field class="full-width-input">
+          <input matInput type="text" formControlName="first" placeholder="First Name" [(ngModel)]="currentUser.first"/>
+        </mat-form-field>
+        <mat-form-field class="full-width-input">
+          <input matInput type="text" formControlName="last" placeholder="Last Name" [(ngModel)]="currentUser.last"/>
+        </mat-form-field>
+        <mat-form-field class="full-width-input">
+            <input matInput type="text" formControlName="userName" placeholder="Username" [(ngModel)]="currentUser.userName"/>
+        </mat-form-field>
+        <mat-form-field class="full-width-input">
+            <input matInput type="password" formControlName="password" placeholder="Password" [(ngModel)]="currentUser.password"/>
+        </mat-form-field>
+        
+        <input type="file" id="avatar"  (change)="onFileChange($event)" #fileInput>
+        <!--<button type="button" class="btn btn-sm btn-default" (click)="clearFile()">clear file</button>-->
+        
+        <button mat-raised-button color="primary" type="submit">Update</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
