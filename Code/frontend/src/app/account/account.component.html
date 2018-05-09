@@ -16,7 +16,9 @@
         <mat-form-field class="full-width-input">
             <input matInput type="password" formControlName="password" placeholder="Password" [(ngModel)]="currentUser.password"/>
         </mat-form-field>
-        
+        <mat-form-field class="full-width-input">
+         <textarea matInput type="text" matAutosizeMaxRows="6" formControlName="about_me" placeholder="About Me" [(ngModel)]="currentUser.about_me" matTextareaAutosize></textarea>
+        </mat-form-field>
         <input type="file" id="avatar"  (change)="onFileChange($event)" #fileInput>
         <!--<button type="button" class="btn btn-sm btn-default" (click)="clearFile()">clear file</button>-->
         

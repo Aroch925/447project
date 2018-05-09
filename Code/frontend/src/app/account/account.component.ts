@@ -28,6 +28,7 @@ export class AccountComponent implements OnInit {
       last: ['', Validators.required],
       userName: ['', Validators.required],
       password: ['', Validators.required],
+      about_me: ['', Validators.nullValidator]
       avatar: null
     });
     this.userService.getbyUsername(this.currentUser.userName).subscribe(
@@ -36,6 +37,7 @@ export class AccountComponent implements OnInit {
         this.currentUser.last = data['last'];
         this.currentUser.password = data['password'];
         this.currentUser.userName = data['userName'];
+        this.currentUser.about_me = data['about_me'];
       }
     );
 
