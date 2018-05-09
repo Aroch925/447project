@@ -5,6 +5,7 @@ export interface User {
     last: string;
     admin: boolean;
     public: boolean;
+    about_me: string;
     question1: number;
     question2: number;
     question3: number;
@@ -18,4 +19,9 @@ export interface User {
     result3: string;
     result4: string;
     result5: string;
+    result6: string;
+    result7: string;
+    result8: string;
+    result9: string;
+    result10: string;
 }

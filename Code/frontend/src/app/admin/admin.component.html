@@ -1,3 +1,75 @@
-<p>
-  admin works!
-</p>
+<div class="admin-container">
+    
+    <div class="example-header">
+        <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
+    </div>
+
+    <mat-table class="user-table mat-elevation-z8" [dataSource]="dataSource">
+    
+        <!-- Checkbox Column -->
+        <ng-container matColumnDef="select">
+            <mat-header-cell *matHeaderCellDef>
+                <mat-checkbox (change)="$event ? masterToggle() : null"
+                        [checked]="selection.hasValue() && isAllSelected()"
+                        [indeterminate]="selection.hasValue() && !isAllSelected()">
+                </mat-checkbox>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <mat-checkbox (click)="$event.stopPropagation()"
+                        (change)="$event ? selection.toggle(row) : null"
+                        [checked]="selection.isSelected(row)">
+                </mat-checkbox>
+            </mat-cell>
+        </ng-container>
+
+
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef>id</mat-header-cell>
+            <mat-cell *matCellDef="let user">{{user.id}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="first">
+            <mat-header-cell *matHeaderCellDef>First Name</mat-header-cell>
+            <mat-cell *matCellDef="let user">{{user.first}}</mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="last">
+            <mat-header-cell *matHeaderCellDef>Last Name</mat-header-cell>
+            <mat-cell *matCellDef="let user">{{user.last}}</mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="userName">
+            <mat-header-cell *matHeaderCellDef>Username</mat-header-cell>
+            <mat-cell *matCellDef="let user">{{user.userName}}</mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="password">
+            <mat-header-cell *matHeaderCellDef>Password</mat-header-cell>
+            <mat-cell *matCellDef="let user">{{user.password}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="public">
+            <mat-header-cell *matHeaderCellDef>Public</mat-header-cell>
+            <mat-cell *matCellDef="let user">{{user.public}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="admin">
+            <mat-header-cell *matHeaderCellDef>Admin</mat-header-cell>
+            <mat-cell *matCellDef="let user">{{user.admin}}</mat-cell>
+        </ng-container>
+    
+    
+    
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    
+    </mat-table>
+
+    
+</div>
+<div id="wrapper">
+    <button mat-raised-button color="primary" type="button" (click)="editUser()">Edit</button>
+    <button mat-raised-button color="secondary" type="button" (click)="deleteUser()">Delete</button>
+</div>    

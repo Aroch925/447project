@@ -11,6 +11,8 @@ class User(models.Model):
     admin = models.BooleanField(default=False)
     public = models.BooleanField(default=True)
 
+    about_me = models.CharField(max_length=100, default="")
+
     question1 = models.IntegerField(default=0)
     question2 = models.IntegerField(default=0)
     question3 = models.IntegerField(default=0)
@@ -25,6 +27,14 @@ class User(models.Model):
     result3 = models.CharField(max_length=30, default="")
     result4 = models.CharField(max_length=30, default="")
     result5 = models.CharField(max_length=30, default="")
+    result6 = models.CharField(max_length=30, default="")
+    result7 = models.CharField(max_length=30, default="")
+    result8 = models.CharField(max_length=30, default="")
+    result9 = models.CharField(max_length=30, default="")
+    result10 = models.CharField(max_length=30, default="")
+
+    avatar = models.FileField(blank=False, null=False, default="profile-placeholder.png")
+
 
 
     

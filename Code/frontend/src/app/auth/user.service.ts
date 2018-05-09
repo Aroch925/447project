@@ -25,10 +25,19 @@ export class UserService {
   }
 
   update(user: User) {
-    return this.http.put('http://localhost:8000/api/users/' + user.userName, user);
+    return this.http.put('http://localhost:8000/api/users?userName=' + user.userName, user);
   }
 
-  delete(user: User) {
-    return this.http.delete('http://localhost:8000/api/users/' + user.userName);
+  delete(user: string) {
+    return this.http.delete('http://localhost:8000/api/users?userName=' + user);
   }
+
+  getResults(userName: string) {
+    return this.http.get('http://localhost:8000/api/calculate?userName=' + userName);
+  }
+
+  calculateResults(user: User) {
+    return this.http.post('http://localhost:8000/api/calculate', user);
+  }
+
 }
