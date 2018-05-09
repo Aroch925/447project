@@ -21,14 +21,13 @@ class countyMap(enum.IntEnum):
 
 class county:
     def __init__(self, valueArray):
-        self.value_array = valueArray;
+        self.value_array = valueArray
         self.score = 0
 
     def set_score(self, weightArray):
         for i in range(2, len(countyMap)):
             self.score += self.value_array[i] * weightArray[i]
 
-    # sort order is reversed to easily accomidate python's max heap
     def __lt__(self, other):
         return self.score < other.score
 
@@ -67,7 +66,7 @@ def bestCounties_immediate(spreadsheet_name, preference_array):
 
         row_num += 1
 
-    return [county.value_array[:1] for county in sorted(topCountiesHeap)]
+    return [iter_county.value_array[:1] for iter_county in sorted(topCountiesHeap)]
 
 
 # this class will allow us to feed in all the counties beforehand to avoid file io
