@@ -12,7 +12,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppMaterialModule } from './app-material/app-material.module';
 
 import './rxjs-operators';
@@ -23,6 +23,7 @@ import { SurveyComponent } from './survey/survey.component';
 import { SocialComponent } from './social/social.component';
 import { AccountComponent } from './account/account.component';
 import { AdminComponent } from './admin/admin.component';
+import { FileUploadModule } from 'ng2-file-upload';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,9 @@ import { AdminComponent } from './admin/admin.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     AppMaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    FileUploadModule
   ],
   providers: [AuthService, AuthGuard, UserService],
   bootstrap: [AppComponent]

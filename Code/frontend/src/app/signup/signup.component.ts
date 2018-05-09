@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService} from './../auth/user.service';
 import { AuthService} from './../auth/auth.service';
+import { User } from './../auth/user';
 
 @Component({
   selector: 'app-signup',
@@ -38,12 +39,14 @@ export class SignupComponent implements OnInit {
 
   onSubmit() {
     if (this.form.valid) {
+      const currentUser: User = this.form.value;
       this.userService.create(this.form.value)
       .subscribe(
         data => {
           if (data['error']) {
             alert(data['error']);
           } else {
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
             this.router.navigate(['/survey']);
           }
       }

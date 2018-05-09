@@ -15,10 +15,14 @@
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item *ngIf="isAdmin$ | async as isAdmin">
+      <button mat-menu-item routerLink="admin">
         <mat-icon>account_circle</mat-icon>
         <span>Admin</span>
       </button>
+      <!--<button mat-menu-item *ngIf="isAdmin$ | async as isAdmin">
+        <mat-icon>account_circle</mat-icon>
+        <span>Admin</span>
+      </button>-->
       <button mat-menu-item routerLink="account">
         <mat-icon>account_circle</mat-icon>
         <span>Account</span>
