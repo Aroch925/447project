@@ -16,6 +16,8 @@ export class AdminUserComponent implements OnInit {
   editUser: User = JSON.parse(localStorage.getItem('currentUser'));
   public loading = false;
 
+  avatars = ['avatar1', 'avatar2', 'avatar3', 'avatar4', 'avatar5', 'avatar6', 'avatar7', 'avatar8', 'avatar9', 'avatar10', 'default'];
+
 
 
   constructor(
@@ -31,8 +33,9 @@ export class AdminUserComponent implements OnInit {
       last: ['', Validators.required],
       userName: ['', Validators.required],
       password: ['', Validators.required],
-      about_me: [''],
+      about_me: [' '],
       admin: [''],
+      avatar: ['']
       // public: ['']
     });
     this.userService.getbyUsername(this.data.editUser).subscribe(
@@ -43,6 +46,7 @@ export class AdminUserComponent implements OnInit {
         this.editUser.userName = data['userName'];
         this.editUser.about_me = data['about_me'];
         this.editUser.admin = data['admin'];
+        this.editUser.avatar = data['avatar'];
       }
     );
   }

@@ -127,7 +127,8 @@ export class MapComponent implements OnInit {
     // tslint:disable-next-line:max-line-length
     this.http.get('https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=' + county).subscribe(
       data => {
-        this.info[index] = data['query']['pages'][Object.keys(data['query']['pages'])[0]]['extract'];
+
+        this.info[index] = data['query']['pages'][Object.keys(data['query']['pages'])[0]]['extract'].slice(0, 360) + '...';
       }
     );
   }
