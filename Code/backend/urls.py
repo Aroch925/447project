@@ -21,13 +21,15 @@ from django.conf.urls.static import static
 from backend.views import AuthenticateView
 from backend.views import UserView
 from backend.views import ResultsView
+from backend.views import UploadView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name='backend/index.html')),
     path('api/authenticate', AuthenticateView.as_view()),
     path('api/users', UserView.as_view()),
-    path('api/calculate', ResultsView.as_view())
+    path('api/calculate', ResultsView.as_view()),
+    path('api/upload', UploadView.as_view())
 
 ]
 

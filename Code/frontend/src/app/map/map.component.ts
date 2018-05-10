@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import { } from '@types/googlemaps';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../auth/user';
 import { UserService } from './../auth/user.service';
 
@@ -26,16 +26,9 @@ export class MapComponent implements OnInit {
   result9: string;
   result10: string;
 
-  info1: string;
-  info2: string;
-  info3: string;
-  info4: string;
-  info5: string;
-  info6: string;
-  info7: string;
-  info8: string;
-  info9: string;
-  info10: string;
+  info = ['', '', '', '', '', '', '', '', '', ''];
+  n = 30;
+  pictures = Array(this.n).join('.').split('.');
   panel_description: string;
 
   constructor(
@@ -69,12 +62,26 @@ export class MapComponent implements OnInit {
         this.result8 = data['result8'];
         this.result9 = data['result9'];
         this.result10 = data['result10'];
-        this.getInfo(this.result1);
-        // this.info1 = this.getInfo(this.result1);
-        // this.info2 = this.getInfo(this.result2);
-        // this.info3 = this.getInfo(this.result3);
-        // this.info4 = this.getInfo(this.result4);
-        // this.info5 = this.getInfo(this.result5);
+        this.getInfo(this.result1, 0);
+        this.getInfo(this.result2, 1);
+        this.getInfo(this.result3, 2);
+        this.getInfo(this.result4, 3);
+        this.getInfo(this.result5, 4);
+        this.getInfo(this.result6, 5);
+        this.getInfo(this.result7, 6);
+        this.getInfo(this.result8, 7);
+        this.getInfo(this.result9, 8);
+        this.getInfo(this.result10, 9);
+        this.getPhotos(this.result1, 0);
+        this.getPhotos(this.result2, 3);
+        this.getPhotos(this.result3, 6);
+        this.getPhotos(this.result4, 9);
+        this.getPhotos(this.result5, 12);
+        this.getPhotos(this.result6, 15);
+        this.getPhotos(this.result7, 18);
+        this.getPhotos(this.result8, 21);
+        this.getPhotos(this.result9, 24);
+        this.getPhotos(this.result10, 27);
         this.panel_description = 'Click For More Info';
       }
     );
@@ -115,13 +122,44 @@ export class MapComponent implements OnInit {
     return whereString;
   }
 
-  getInfo(result) {
+  getInfo(result, index) {
+    const county = result.slice(0, -4) + ', ' + this.stateLookup(result.slice(-2));
     // tslint:disable-next-line:max-line-length
-    this.http.get('https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=' + result).subscribe(
-    data => {
-      console.log(data);
+    this.http.get('https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=' + county).subscribe(
+      data => {
+        this.info[index] = data['query']['pages'][Object.keys(data['query']['pages'])[0]]['extract'];
+      }
+    );
+  }
+
+  getPhotos(result, index) {
+    const options = {
+      'api_key': '3110b3dc88002e87bc291048a3bdc6bb',
+      'method': 'flickr.photos.search', // You can replace this with whatever method,
+      'per_page': '3',
+      'extras': 'url_m',
+      'format': 'json',
+      'nojsoncallback': '1',
+      'text': result  // This is where you'll put your "file name"
+    };
+    let url = 'https://api.flickr.com/services/rest/';
+    let first = true;
+    for (const item in options) {
+      if (options.hasOwnProperty(item)) {
+        url += (first ? '?' : '&') + item + '=' + options[item];
+        first = false;
+      }
     }
-  );
+    this.http.get(url).subscribe(
+      data => {
+        const arrlen = data['photos']['photo'].length;
+        // tslint:disable-next-line:max-line-length
+        this.pictures[index] = data['photos']['photo'][0]['url_m'];
+        this.pictures[index + 1] = data['photos']['photo'][1]['url_m'];
+        this.pictures[index + 2] = data['photos']['photo'][2]['url_m'];
+      }
+    );
+
   }
 
 

@@ -1,0 +1,26 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <h2>Account Information</h2>
+
+  <mat-form-field class="full-width-input">
+    <input matInput type="text" formControlName="first" placeholder="First Name" [(ngModel)]="editUser.first" />
+  </mat-form-field>
+  <mat-form-field class="full-width-input">
+    <input matInput type="text" formControlName="last" placeholder="Last Name" [(ngModel)]="editUser.last" />
+  </mat-form-field>
+  <mat-form-field class="full-width-input">
+    <input matInput type="text" formControlName="userName" placeholder="Username" [(ngModel)]="editUser.userName" />
+  </mat-form-field>
+  <mat-form-field class="full-width-input">
+    <input matInput type="password" formControlName="password" placeholder="Password" [(ngModel)]="editUser.password" />
+  </mat-form-field>
+  <mat-form-field class="full-width-input">
+    <textarea matInput type="text" matAutosizeMaxRows="6" formControlName="about_me" placeholder="About Me" [(ngModel)]="editUser.about_me"
+      matTextareaAutosize></textarea>
+  </mat-form-field>
+  <div>
+    <mat-checkbox formControlName="admin" [(ngModel)]="editUser.admin">Admin</mat-checkbox>
+    <!--<mat-checkbox formControlName="public" [(ngModel)]="editUser.public">Public</mat-checkbox>-->
+  </div>
+  <!--<input type="file" ng2FileSelect [uploader]="uploader" />-->
+  <button mat-raised-button color="primary" type="submit">Update</button>
+</form>

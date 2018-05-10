@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from './../auth/user';
 import { UserService } from './../auth/user.service';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource, MatDialogRef } from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
 import {MatDialog, MatDialogConfig} from '@angular/material';
+import { AdminUserComponent } from './admin-user/admin-user.component';
 
 @Component({
   selector: 'app-admin',
@@ -11,9 +12,11 @@ import {MatDialog, MatDialogConfig} from '@angular/material';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-  displayedColumns = ['select', 'id', 'first', 'last', 'userName', 'password', 'public', 'admin'];
+  displayedColumns = ['select', 'id', 'first', 'last', 'userName', 'password', 'avatar', 'admin'];
   dataSource: MatTableDataSource<User>;
   selection = new SelectionModel<User>(true, []);
+  adminUserDialogRef: MatDialogRef<AdminUserComponent>;
+  public loading = false;
 
   constructor(
     private userService: UserService,
@@ -24,6 +27,18 @@ export class AdminComponent implements OnInit {
     this.refresh();
   }
 
+  openEditUserDialog(userName) {
+    this.adminUserDialogRef = this.dialog.open(AdminUserComponent, {
+      data: {
+        editUser: userName
+      }
+    });
+    this.adminUserDialogRef.afterClosed().subscribe(() => {
+      this.refresh();
+      this.masterToggle();
+      this.masterToggle();
+    });
+  }
   refresh() {
     this.userService.getAll().subscribe(
       data => {
@@ -50,11 +65,13 @@ export class AdminComponent implements OnInit {
       alert('You can only edit one user at a time');
     } else if (this.selection.selected[0].userName === currentUser.userName) {
       alert('Cannot Edit Current User from Admin Page');
+    } else {
+      this.openEditUserDialog(this.selection.selected[0].userName);
     }
-    // console.log(this.selection.selected[0].userName);
   }
 
   deleteUser() {
+    this.loading = true;
     const currentUser: User = JSON.parse(localStorage.getItem('currentUser'));
     for (let i = 0; i < this.selection.selected.length; i++) {
       if (this.selection.selected[0].userName === currentUser.userName) {
@@ -62,7 +79,15 @@ export class AdminComponent implements OnInit {
       } else {
         this.userService.delete(this.selection.selected[i].userName).subscribe(
           data => {
-            // console.log(data);
+            if (data['success']) {
+              this.refresh();
+              this.masterToggle();
+              this.masterToggle();
+              this.loading = false;
+            } else {
+              this.loading = false;
+              alert(data['error']);
+            }
           }
         );
       }

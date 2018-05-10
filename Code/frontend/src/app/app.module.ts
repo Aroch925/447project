@@ -24,6 +24,8 @@ import { SocialComponent } from './social/social.component';
 import { AccountComponent } from './account/account.component';
 import { AdminComponent } from './admin/admin.component';
 import { FileUploadModule } from 'ng2-file-upload';
+import { LoadingModule } from 'ngx-loading';
+import { AdminUserComponent } from './admin/admin-user/admin-user.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { FileUploadModule } from 'ng2-file-upload';
     SurveyComponent,
     SocialComponent,
     AccountComponent,
-    AdminComponent
+    AdminComponent,
+    AdminUserComponent
   ],
   imports: [
     BrowserModule,
@@ -46,9 +49,11 @@ import { FileUploadModule } from 'ng2-file-upload';
     AppMaterialModule,
     HttpClientModule,
     FormsModule,
-    FileUploadModule
+    FileUploadModule,
+    LoadingModule
   ],
   providers: [AuthService, AuthGuard, UserService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AdminUserComponent]
 })
 export class AppModule { }

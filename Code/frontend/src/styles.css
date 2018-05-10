@@ -8,7 +8,18 @@ body {
     margin: 0;
     font-family: Roboto, sans-serif;
 }
+html {
+    height:100%;
+}
 
-.app-HOME{
+/*.app-HOME{
     height: 100vh;
+}*/
+
+.routeContainer {
+    position: relative;
+
+}
+.routeContainer>* {
+    display: block;
 }

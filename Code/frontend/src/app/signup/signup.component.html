@@ -29,6 +29,17 @@
             Please inform your password
           </mat-error>
         </mat-input-container>
+        <mat-input-container class="full-width-input">
+          <textarea matInput type="text" matAutosizeMaxRows="6" formControlName="about_me" placeholder="About Me" matTextareaAutosize></textarea>
+        </mat-input-container>
+        <mat-input-container class="full-width-input">
+          <mat-select placeholder="Avatar" formControlName="avatar">
+            <mat-option *ngFor="let avatar of avatars" [value]="avatar">
+              <img src='assets\images\{{ avatar }}.png' style="height: 25px; width: 25px;">
+                    {{ avatar }}
+            </mat-option>
+          </mat-select>
+        </mat-input-container>
         
         <button mat-raised-button color="primary" type="submit">Sign Up</button>
         <button mat-raised-button color="secondary" [routerLink]="['/login']">Cancel</button>   

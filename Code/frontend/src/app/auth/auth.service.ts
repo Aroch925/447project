@@ -35,7 +35,8 @@ export class AuthService {
 
   login(user: User) {
     if (user.userName !== '' && user.password !== '' ) {
-      this.http.post('http://localhost:8000/api/authenticate', user)
+      return this.http.post('http://localhost:8000/api/authenticate', user);
+      /*this.http.post('http://localhost:8000/api/authenticate', user)
       .subscribe(
         data => {
           if (data['success']) {
@@ -46,7 +47,7 @@ export class AuthService {
             alert(data['error']);
           }
         }
-      );
+      );*/
     }
   }
 

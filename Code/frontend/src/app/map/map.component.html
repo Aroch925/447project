@@ -3,8 +3,8 @@
     <mat-grid-tile colspan='7'>
       <div #gmap style="height:100%; width:100%"></div>
     </mat-grid-tile>
-    <mat-grid-tile colspan='3'>
-      <mat-accordion class="mat-elevation-z8">
+    <mat-grid-tile colspan='3' id="info">
+      <mat-accordion class="mat-elevation-z8" displayMode="flat">
         <mat-expansion-panel id="result1" (opened)="zoomIn1()" (closed)="resetMap()">
           <mat-expansion-panel-header>
             <mat-panel-title>
@@ -14,6 +14,12 @@
                 {{ panel_description }}
             </mat-panel-description>
           </mat-expansion-panel-header>
+          <p>{{ info[0] }}</p>
+          <div>
+            <img src="{{ pictures[0] }}" alt="" style="height: 80px; max-width: 100px;" /> 
+            <img src="{{ pictures[1] }}" alt="" style="height: 80px; max-width: 100px;" />
+            <img src="{{ pictures[2] }}" alt="" style="height: 80px; max-width: 100px;" />
+          </div>
         </mat-expansion-panel>
         <mat-expansion-panel id="result2" (opened)="zoomIn2()" (closed)="resetMap()">
           <mat-expansion-panel-header>
@@ -24,7 +30,12 @@
                 {{ panel_description }}
             </mat-panel-description>
           </mat-expansion-panel-header>
-          <p>I'm visible because I am open</p>
+          <p>{{ info[1] }}</p>
+          <div>
+            <img src="{{ pictures[3] }}" alt="" style="height: 80px; max-width: 100px;" /> 
+            <img src="{{ pictures[4] }}" alt="" style="height: 80px; max-width: 100px;" />
+            <img src="{{ pictures[5] }}" alt="" style="height: 80px; max-width: 100px;" />
+          </div>
         </mat-expansion-panel>
         <mat-expansion-panel id="result3" (opened)="zoomIn3()" (closed)="resetMap()">
           <mat-expansion-panel-header>
@@ -35,7 +46,12 @@
                 {{ panel_description }}
             </mat-panel-description>
           </mat-expansion-panel-header>
-          <p>I'm visible because I am open</p>
+          <p>{{ info[2] }}</p>
+          <div>
+            <img src="{{ pictures[6] }}" alt="" style="height: 80px; max-width: 100px;" /> 
+            <img src="{{ pictures[7] }}" alt="" style="height: 80px; max-width: 100px;" />
+            <img src="{{ pictures[8] }}" alt="" style="height: 80px; max-width: 100px;" />
+          </div>
         </mat-expansion-panel>
         <mat-expansion-panel id="result4" (opened)="zoomIn4()" (closed)="resetMap()">
           <mat-expansion-panel-header>
@@ -46,7 +62,12 @@
                 {{ panel_description }}
             </mat-panel-description>
           </mat-expansion-panel-header>
-          <p>I'm visible because I am open</p>
+          <p>{{ info[3] }}</p>
+          <div>
+            <img src="{{ pictures[9] }}" alt="" style="height: 80px; max-width: 100px;" /> 
+            <img src="{{ pictures[10] }}" alt="" style="height: 80px; max-width: 100px;" />
+            <img src="{{ pictures[11] }}" alt="" style="height: 80px; max-width: 100px;" />
+          </div>
         </mat-expansion-panel>
         <mat-expansion-panel id="result5" (opened)="zoomIn5()" (closed)="resetMap()">
           <mat-expansion-panel-header>
@@ -57,7 +78,12 @@
               {{ panel_description }}
             </mat-panel-description>
           </mat-expansion-panel-header>
-          <p>I'm visible because I am open</p>
+          <p>{{ info[4] }}</p>
+          <div>
+            <img src="{{ pictures[12] }}" alt="" style="height: 80px; max-width: 100px;" /> 
+            <img src="{{ pictures[13] }}" alt="" style="height: 80px; max-width: 100px;" />
+            <img src="{{ pictures[14] }}" alt="" style="height: 80px; max-width: 100px;" />
+          </div>
         </mat-expansion-panel>
         <mat-expansion-panel id="result6" (opened)="zoomIn6()" (closed)="resetMap()">
           <mat-expansion-panel-header>
@@ -68,7 +94,12 @@
                 {{ panel_description }}
             </mat-panel-description>
           </mat-expansion-panel-header>
-          <p>I'm visible because I am open</p>
+          <p>{{ info[5] }}</p>
+          <div>
+            <img src="{{ pictures[15] }}" alt="" style="height: 80px; max-width: 100px;" /> 
+            <img src="{{ pictures[16] }}" alt="" style="height: 80px; max-width: 100px;" />
+            <img src="{{ pictures[17] }}" alt="" style="height: 80px; max-width: 100px;" />
+          </div>
         </mat-expansion-panel>
         <mat-expansion-panel id="result7" (opened)="zoomIn7()" (closed)="resetMap()">
           <mat-expansion-panel-header>
@@ -79,7 +110,12 @@
                 {{ panel_description }}
             </mat-panel-description>
           </mat-expansion-panel-header>
-          <p>I'm visible because I am open</p>
+          <p>{{ info[6] }}</p>
+          <div>
+            <img src="{{ pictures[18] }}" alt="" style="height: 80px; max-width: 100px;" /> 
+            <img src="{{ pictures[19] }}" alt="" style="height: 80px; max-width: 100px;" />
+            <img src="{{ pictures[20] }}" alt="" style="height: 80px; max-width: 100px;" />
+          </div>
         </mat-expansion-panel>
         <mat-expansion-panel id="result8" (opened)="zoomIn8()" (closed)="resetMap()">
           <mat-expansion-panel-header>
@@ -90,7 +126,12 @@
                 {{ panel_description }}
             </mat-panel-description>
           </mat-expansion-panel-header>
-          <p>I'm visible because I am open</p>
+          <p>{{ info[7] }}</p>
+          <div>
+            <img src="{{ pictures[21] }}" alt="" style="height: 80px; max-width: 100px;" /> 
+            <img src="{{ pictures[22] }}" alt="" style="height: 80px; max-width: 100px;" />
+            <img src="{{ pictures[23] }}" alt="" style="height: 80px; max-width: 100px;" />
+          </div>
         </mat-expansion-panel>
         <mat-expansion-panel id="result9" (opened)="zoomIn9()" (closed)="resetMap()">
           <mat-expansion-panel-header>
@@ -101,7 +142,12 @@
                 {{ panel_description }}
             </mat-panel-description>
           </mat-expansion-panel-header>
-          <p>I'm visible because I am open</p>
+          <p>{{ info[8] }}</p>
+          <div>
+            <img src="{{ pictures[24] }}" alt="" style="height: 80px; max-width: 100px;" /> 
+            <img src="{{ pictures[25] }}" alt="" style="height: 80px; max-width: 100px;" />
+            <img src="{{ pictures[26] }}" alt="" style="height: 80px; max-width: 100px;" />
+          </div>
         </mat-expansion-panel>
         <mat-expansion-panel id="result10" (opened)="zoomIn10()" (closed)="resetMap()">
           <mat-expansion-panel-header>
@@ -112,7 +158,12 @@
                 {{ panel_description }}
             </mat-panel-description>
           </mat-expansion-panel-header>
-          <p>I'm visible because I am open</p>
+          <p>{{ info[9] }}</p>
+          <div>
+            <img src="{{ pictures[27] }}" alt="" style="height: 80px; max-width: 100px;" /> 
+            <img src="{{ pictures[28] }}" alt="" style="height: 80px; max-width: 100px;" />
+            <img src="{{ pictures[29] }}" alt="" style="height: 80px; max-width: 100px;" />
+          </div>
         </mat-expansion-panel>
       </mat-accordion>
     </mat-grid-tile>

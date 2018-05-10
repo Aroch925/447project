@@ -5,6 +5,7 @@ from backend.serializers import UserSerializer
 from backend.serializers import AuthSerializer
 from backend.serializers import ResultsSerializer
 from backend.get_top_counties import bestCounties_immediate
+from rest_framework.parsers import MultiPartParser
 
 from backend.models import User
 
@@ -60,16 +61,21 @@ class UserView(APIView):
     # For updating a User in the database
     def put(self, request):
         user = User.objects.get(userName=request.data["userName"])
+        
         if 'password' in request.data:
             user.password = request.data["password"]
         if 'first' in request.data:
             user.first = request.data["first"]
+        if 'last' in request.data:
+            user.last = request.data["last"]
         if 'admin' in request.data:
             user.admin = request.data["admin"]
         if 'public' in request.data:
             user.public = request.data["public"]
         if 'about_me' in request.data:
             user.about_me = request.data["about_me"]
+        if 'avatar' in request.data:
+            user.avatar = request.data["avatar"]
         if 'question1' in request.data:
             user.question1 = request.data["question1"]
         if 'question2' in request.data:
@@ -101,7 +107,7 @@ class UserView(APIView):
             user.result4 = request.data["result9"]
         if 'result10' in request.data:
             user.result5 = request.data["result10"] 
-
+        
         user.save()
 
         return Response({"success": "It worked"})
@@ -120,14 +126,14 @@ class ResultsView(APIView):
 
         user = User.objects.get(userName=request.data['userName'])
         arr = [0] * 12
-        arr[2] = user.question3
-        arr[3] = user.question2
-        arr[4] = user.question1
-        arr[7] = user.question4
-        arr[6] = user.question5
+        arr[2] = int(request.data['question3'])
+        arr[3] = int(request.data['question2'])
+        arr[4] = int(request.data['question1'])
+        arr[7] = int(request.data['question4'])
+        arr[6] = int(request.data['question5'])
 
         results = bestCounties_immediate("C:/Users/aroch/Desktop/Group2Project/Census_Data_Massage/processed_sheets/census_selected_data.xlsx", arr)
-        #print(results)
+
         user.result1 = results[0][0]
         user.result2 = results[1][0]
         user.result3 = results[2][0]
@@ -149,3 +155,16 @@ class ResultsView(APIView):
             serializer = ResultsSerializer(user)
             return Response(serializer.data)
         return Response({"success": "It worked"})
+
+class UploadView(APIView):
+    parser_classes = (MultiPartParser,)
+
+    def get(self, request):
+        return Response({"success": "It worked"})
+
+    def post(self, request):
+        print(request)
+        #file_obj = request.data['file']
+        #ftype = request.data['ftype']
+
+        return Response(status=204)

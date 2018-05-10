@@ -1,5 +1,5 @@
 <div class="admin-container">
-    
+    <ngx-loading [show]="loading" [config]="{ fullScreenBackdrop: true }"></ngx-loading>
     <div class="example-header">
         <mat-form-field>
             <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
@@ -50,9 +50,9 @@
             <mat-cell *matCellDef="let user">{{user.password}}</mat-cell>
         </ng-container>
 
-        <ng-container matColumnDef="public">
-            <mat-header-cell *matHeaderCellDef>Public</mat-header-cell>
-            <mat-cell *matCellDef="let user">{{user.public}}</mat-cell>
+        <ng-container matColumnDef="avatar">
+            <mat-header-cell *matHeaderCellDef>Avatar</mat-header-cell>
+            <mat-cell *matCellDef="let user">{{user.avatar}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="admin">
@@ -66,10 +66,8 @@
         <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
     
     </mat-table>
-
-    
 </div>
 <div id="wrapper">
-    <button mat-raised-button color="primary" type="button" (click)="editUser()">Edit</button>
-    <button mat-raised-button color="secondary" type="button" (click)="deleteUser()">Delete</button>
+    <button mat-raised-button color="primary" type="button" (click)="editUser()" *ngIf="selection.selected.length == 1">Edit</button>
+    <button mat-raised-button color="secondary" type="button" (click)="deleteUser()" *ngIf="selection.selected.length > 0">Delete</button>
 </div>    

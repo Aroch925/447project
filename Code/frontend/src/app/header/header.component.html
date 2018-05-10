@@ -1,35 +1,32 @@
 <mat-toolbar color="primary" *ngIf="isLoggedIn$ | async as isLoggedIn" class="mat-elevation-z5">
   <span>
     <!--<img src="assets/img/angular_whiteTransparent.svg" class="angular-logo">-->
-    <button mat-button routerLink="/"><h2>Group 2 Project</h2></button>
+    <button mat-button routerLink="/">
+      <h2><img src="assets/images/worldwide-location.png" class="angular-logo"> GroUP<sup>2</sup></h2>
+    </button>
   </span>
   <span class="fill-remaining-space"></span>
   <button mat-button routerLink="survey">Retake the Survey</button>
-  <!--button mat-button routerLink="login" *ngIf="!isLoggedIn; else notLoggedIn">Login</button>
-  <ng-template #notLoggedIn>
-    <button mat-button (click)="onLogout()">Logout</button>
-  </ng-template -->
-  <!--<button mat-button (click)="onLogout()" *ngIf="isLoggedIn">Logout</button>-->
-  <button mat-button routerLink="social">Explore</button>
+  <!--<button mat-button routerLink="social">Explore</button>-->
   <button mat-icon-button [matMenuTriggerFor]="menu">
-      <mat-icon>more_vert</mat-icon>
+    <img src='assets\images\{{ avatar }}.png' style="height: 35px; width: 35px;">
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="admin" *ngIf="isAdmin">
+      <mat-icon>account_circle</mat-icon>
+      <span>Admin</span>
     </button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item routerLink="admin">
-        <mat-icon>account_circle</mat-icon>
-        <span>Admin</span>
-      </button>
-      <!--<button mat-menu-item *ngIf="isAdmin$ | async as isAdmin">
+    <!--<button mat-menu-item *ngIf="isAdmin$ | async as isAdmin">
         <mat-icon>account_circle</mat-icon>
         <span>Admin</span>
       </button>-->
-      <button mat-menu-item routerLink="account">
-        <mat-icon>account_circle</mat-icon>
-        <span>Account</span>
-      </button>
-      <button mat-menu-item (click)="onLogout()" *ngIf="isLoggedIn">
-        <mat-icon>power_settings_new</mat-icon>
-        <span>Log Out</span>
-      </button>
-    </mat-menu>
+    <button mat-menu-item routerLink="account">
+      <mat-icon>account_circle</mat-icon>
+      <span>Account</span>
+    </button>
+    <button mat-menu-item (click)="onLogout()" *ngIf="isLoggedIn">
+      <mat-icon>power_settings_new</mat-icon>
+      <span>Log Out</span>
+    </button>
+  </mat-menu>
 </mat-toolbar>

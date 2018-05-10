@@ -14,6 +14,8 @@ export class SignupComponent implements OnInit {
   form: FormGroup;
   private formSubmitAttempt: boolean;
 
+  avatars = ['avatar1', 'avatar2', 'avatar3', 'avatar4', 'avatar5', 'avatar6', 'avatar7', 'avatar8', 'avatar9', 'avatar10', 'default'];
+
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
@@ -26,7 +28,9 @@ export class SignupComponent implements OnInit {
       userName: ['', Validators.required],
       first: ['', Validators.required],
       last: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
+      about_me: ['', Validators.required],
+      avatar: ['', Validators.required]
     });
   }
 
@@ -46,6 +50,7 @@ export class SignupComponent implements OnInit {
           if (data['error']) {
             alert(data['error']);
           } else {
+            currentUser.admin = false;
             localStorage.setItem('currentUser', JSON.stringify(currentUser));
             this.router.navigate(['/survey']);
           }

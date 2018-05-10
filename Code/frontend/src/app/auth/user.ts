@@ -6,6 +6,7 @@ export interface User {
     admin: boolean;
     public: boolean;
     about_me: string;
+    avatar: string;
     question1: number;
     question2: number;
     question3: number;

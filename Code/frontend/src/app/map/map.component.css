@@ -4,4 +4,14 @@
     max-height: 500px;
     min-width: 300px;
     overflow: auto;
-  }
+}
+
+.mat-accordion {
+  width: 100%;
+  overflow:auto;
+}
+
+#info {
+  padding-top: 20px;
+  /*padding-bottom: 50px;*/ 
+}

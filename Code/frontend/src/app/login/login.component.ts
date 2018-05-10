@@ -12,6 +12,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
   form: FormGroup;
   private formSubmitAttempt: boolean;
+  public loading = false;
 
   constructor(
     private fb: FormBuilder,
@@ -38,8 +39,21 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
+    this.loading = true;
     if (this.form.valid) {
-      this.authService.login(this.form.value);
+      this.authService.login(this.form.value)
+      .subscribe( res => {
+        if (res['success']) {
+          this.loading = false;
+          this.authService.loggedIn.next(true);
+          localStorage.setItem('currentUser', JSON.stringify(this.form.value));
+          this.router.navigate(['/']);
+          window.location.reload();
+        } else {
+          this.loading = false;
+          alert(res['error']);
+        }
+      });
     }
     this.formSubmitAttempt = true;
   }

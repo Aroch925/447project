@@ -15,7 +15,8 @@ export class SurveyComponent implements OnInit {
   form: FormGroup;
   private formSubmitAttempt: boolean;
   isLoggedIn$: Observable<boolean>;
-  currentUser: User;
+  currentUser: User = JSON.parse(localStorage.getItem('currentUser'));
+  public loading = false;
 
   constructor(
     private fb: FormBuilder,
@@ -36,9 +37,9 @@ export class SurveyComponent implements OnInit {
   }
 
   onSubmit() {
+    this.loading = true;
     if (this.form.valid) {
-      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-      /*this.currentUser.question1 = this.form.value['question1'];
+      this.currentUser.question1 = this.form.value['question1'];
       this.currentUser.question2 = this.form.value['question2'];
       this.currentUser.question3 = this.form.value['question3'];
       this.currentUser.question4 = this.form.value['question4'];
@@ -47,14 +48,19 @@ export class SurveyComponent implements OnInit {
         data => {
           console.log(data);
         }
-      );*/
-      this.userService.calculateResults(this.currentUser).subscribe(
-        data => {
-          console.log(data);
+      );
+      this.userService.calculateResults(this.currentUser)
+      .subscribe( res => {
+          if (res['success']) {
+            this.loading = false;
+            this.authService.loggedIn.next(true);
+            this.router.navigate(['/']);
+          } else {
+            this.loading = false;
+            alert(res['error']);
+          }
         }
       );
-      this.authService.loggedIn.next(true);
-      this.router.navigate(['/']);
     }
     this.formSubmitAttempt = true;
   }

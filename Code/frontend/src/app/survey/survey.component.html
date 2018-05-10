@@ -1,6 +1,7 @@
 <div class="survey-content">
+  <ngx-loading [show]="loading" [config]="{ fullScreenBackdrop: true }"></ngx-loading>
   <mat-card class="mat-elevation-z8">
-    <mat-card-content>
+    <mat-card-content [style.overflow]="'auto'" [style.height.px]="'500'">
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
           <h2>Please Fill Out the Survey</h2>
           <mat-input-container class="full-width-input">

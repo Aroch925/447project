@@ -1,6 +1,8 @@
 <div class="signin-content">
+  <ngx-loading [show]="loading" [config]="{ fullScreenBackdrop: true }"></ngx-loading>
   <mat-card class="mat-elevation-z8">
     <mat-card-content>
+        <img src="assets/images/logo.png" class="angular-logo" style="height:120px; width:120px;">
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <p>Please login to continue</p>
         <mat-input-container class="full-width-input">
