@@ -4,8 +4,9 @@
     <mat-card-content [style.overflow]="'auto'" [style.height.px]="'500'">
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
           <h2>Please Fill Out the Survey</h2>
+          <h3>(1 is low, 5 is high)</h3>
           <mat-input-container class="full-width-input">
-          <h3>How much do you care about good air quality?</h3>
+          <h3>How important to you is air quality?</h3>
           <mat-form-field>
             <mat-select formControlName="question1" required>
               <mat-option value="1">1</mat-option>
@@ -17,7 +18,7 @@
           </mat-form-field>
         </mat-input-container>
         <mat-input-container class="full-width-input">
-          <h3>How much do you care about low crime rates?</h3>          
+          <h3>How important is low crime rate?</h3>          
           <mat-form-field>
             <mat-select formControlName="question2" required>
               <mat-option value="1">1</mat-option>
@@ -29,7 +30,7 @@
           </mat-form-field>
         </mat-input-container>
         <mat-input-container class="full-width-input">
-          <h3>How much do you care about having arts in your area?</h3>
+          <h3>How important is easy access to recreational activities?</h3>
           <mat-form-field>  
             <mat-select formControlName="question3" required>
               <mat-option value="1">1</mat-option>
@@ -41,7 +42,7 @@
           </mat-form-field>
         </mat-input-container>
         <mat-input-container class="full-width-input">
-          <h3>How much do you care about low cost of living?</h3>
+          <h3>How important to you is low cost of living?</h3>
           <mat-form-field>
             <mat-select formControlName="question4" required>
               <mat-option value="1">1</mat-option>
@@ -53,7 +54,7 @@
           </mat-form-field>
         </mat-input-container>
         <mat-input-container class="full-width-input">
-          <h3>How much do you care about the unemployment rate?</h3>
+          <h3>How important is finding a job near you?</h3>
           <mat-form-field>  
             <mat-select formControlName="question5" required>
               <mat-option value="1">1</mat-option>

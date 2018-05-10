@@ -47,8 +47,8 @@ export class LoginComponent implements OnInit {
           this.loading = false;
           this.authService.loggedIn.next(true);
           localStorage.setItem('currentUser', JSON.stringify(this.form.value));
-          this.router.navigate(['/']);
           window.location.reload();
+          this.router.navigate(['/']);
         } else {
           this.loading = false;
           alert(res['error']);
